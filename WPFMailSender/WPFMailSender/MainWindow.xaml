@@ -18,10 +18,51 @@
             <MenuItem Header="Сервис"/>
             <MenuItem Header="Помощь"/>
         </Menu>
+        <!--Не смог придумать как сделать выплывающее меню
+            Нашел один вариант
+            
+            Для меню содается отдельное окно и для него в основном окне прописывается анимация
+        Прописываем анимацию
+        <Storyboard x:Key="Open">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="newControl">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="297"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Close">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="newControl">
+                <EasingDoubleKeyFrame KeyTime="0" Value="297"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        
+        Прописываем тригеры
+        <Window.Triggers>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="newControl">
+            <BeginStoryboard Storyboard="{StaticResource Open}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="newControl">
+            <BeginStoryboard x:Name="Close_BeginStoryboard" Storyboard="{StaticResource Close}"/>
+        </EventTrigger>
+    </Window.Triggers>
+        
+        Логика
+         <Grid x:Name="grid" Margin="0,0,-8,0">
+
+        <local:NewControl x:Name="newControl" HorizontalAlignment="Left" Margin="89,-160,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="125">
+            <local:NewControl.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </local:NewControl.RenderTransform>
+        </local:NewControl>
+       </Grid>-->
         <TabControl TabStripPlacement="Left">
             <TabItem Padding="10,10" Header="Рассылка">
                 <Grid>
-                    <Button Content="Send" Margin="250,30,390,0" Click="OnSendButtonClick" VerticalAlignment="Top" Width="60" Height="20"/>
+                    <Button Content="Send" Margin="150,326,473,0" Click="OnSendButtonClick" VerticalAlignment="Top" Height="20"/>
                     <TextBox x:Name="UserNameEdit" HorizontalAlignment="Left" VerticalAlignment="Top"
                              Margin="10,30,0,0" Text="UserName" TextWrapping="Wrap" Width="101">
                     </TextBox>
@@ -34,11 +75,11 @@
                    HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <TextBox HorizontalAlignment="Left" Margin="10,130,0,0" 
                              Name="MailBody"
-                             Text="Добрый день!" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="179"/>
+                             Text="Добрый день!" TextWrapping="Wrap" VerticalAlignment="Top" Width="224" Height="179"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,110,0,0" Text="Письмо" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Width="101"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,60,0,0" Text="Тема" TextWrapping="Wrap" VerticalAlignment="Top" Width="101"/>
                     <TextBox HorizontalAlignment="Left" Margin="10,80,0,0" Text="Тема письма"
-                             Name="MailSubject"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                             Name="MailSubject"  TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
                 </Grid>
             </TabItem>
             <TabItem Padding="10,10" Header="Статистика">
