@@ -21,20 +21,24 @@
         <TabControl TabStripPlacement="Left">
             <TabItem Padding="10,10" Header="Рассылка">
                 <Grid>
-                    <Button Content="Send" Margin="10,10,10,10" Click="OnSendButtonClick" VerticalAlignment="Bottom" Width="59"/>
+                    <Button Content="Send" Margin="250,30,390,0" Click="OnSendButtonClick" VerticalAlignment="Top" Width="60" Height="20"/>
                     <TextBox x:Name="UserNameEdit" HorizontalAlignment="Left" VerticalAlignment="Top"
-                 Margin="171,158,0,0" Text="UserName" TextWrapping="Wrap" Width="120">
-                        <TextBox.Effect>
-                            <BlurEffect Radius="2"/>
-                        </TextBox.Effect>
+                             Margin="10,30,0,0" Text="UserName" TextWrapping="Wrap" Width="101">
                     </TextBox>
                     <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top"
                      Name="PasswordEdit"
-                     Margin="427,165,0,0" Width="120" Password="Password"/>
-                    <TextBlock Margin="170,132,0,0" Text="Имя пользователя" TextWrapping="Wrap"
+                     Margin="150,30,0,0" Width="84" Password="Password"/>
+                    <TextBlock Margin="10,10,0,0" Text="Имя пользователя" TextWrapping="Wrap"
                    HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <TextBlock Margin="432,132,0,0" Text="Пароль" TextWrapping="Wrap" Width="120"
+                    <TextBlock Margin="150,10,0,0" Text="Пароль" TextWrapping="Wrap" Width="120"
                    HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Margin="10,130,0,0" 
+                             Name="MailBody"
+                             Text="Добрый день!" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="179"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,110,0,0" Text="Письмо" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Width="101"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,60,0,0" Text="Тема" TextWrapping="Wrap" VerticalAlignment="Top" Width="101"/>
+                    <TextBox HorizontalAlignment="Left" Margin="10,80,0,0" Text="Тема письма"
+                             Name="MailSubject"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 </Grid>
             </TabItem>
             <TabItem Padding="10,10" Header="Статистика">
