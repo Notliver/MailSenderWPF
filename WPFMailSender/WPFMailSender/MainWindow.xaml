@@ -6,7 +6,23 @@
         xmlns:local="clr-namespace:WPFMailSender"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Создать" />
+                <MenuItem Header="Открыть"/>
+                <MenuItem Header="Сохранить"/>
+                <Separator/>
+                <MenuItem Header="Выйти"/>
+            </MenuItem>
+            <MenuItem Header="Сервис"/>
+            <MenuItem Header="Помощь"/>
+        </Menu>
+        <TabControl TabStripPlacement="Left">
+            <TabItem Padding="10,10" Header="Рассылка">
+            </TabItem>
+            <TabItem Padding="10,10" Header="Статистика"/>
 
-    </Grid>
+        </TabControl>
+    </DockPanel>
 </Window>
