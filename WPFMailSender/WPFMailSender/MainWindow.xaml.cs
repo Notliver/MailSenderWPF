@@ -29,6 +29,7 @@ namespace WPFMailSender
         }
         private void OnSendButtonClick(object sender, RoutedEventArgs e)
         {
+            
             const string from = "akurganskiy@yandex.ru";
             const string to = "akurganskii@gmail.com";
 
@@ -47,7 +48,6 @@ namespace WPFMailSender
                         client.EnableSsl = true;
 
                         var user_name = UserNameEdit.Text;
-                        //var user_password = PasswordEdit.Password;
                         SecureString user_password = PasswordEdit.SecurePassword;
 
                         client.Credentials = new NetworkCredential(user_name, user_password);
