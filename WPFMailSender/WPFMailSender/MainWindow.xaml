@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:WPFMailSender"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -59,9 +60,85 @@
             </local:NewControl.RenderTransform>
         </local:NewControl>
        </Grid>-->
+        <StatusBar DockPanel.Dock="Bottom">
+            <TextBlock Text="Панель статуса"/>
+        </StatusBar>
         <TabControl TabStripPlacement="Left">
-            <TabItem Padding="10,10" Header="Рассылка">
+            
+            <!--Как сделать Иконки у каждой вкладки?
+                Сделал
+                
+                Посмотреть как можно это все оптимизировать для уменьшающегося меню
+                Как вариант поиграть с Grid внутри StackPanel
+            -->
+            
+            <TabItem Padding="10,10">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Рассылка</TextBlock>
+                        <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Send"/>
+                    </StackPanel>
+                </TabItem.Header>
+
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ToolBarTray>
+                        <ToolBar Header="Отправители" Band="0">
+                            <ComboBox Width="150"/>
+                            <Button ToolTip="Добавить">
+                                <fa:ImageAwesome Height="16" Icon="PlusCircle" Foreground="DarkGreen"/>
+                            </Button>
+                            <Button ToolTip="Редактировать">
+                                <fa:ImageAwesome Height="16" Icon="Edit" Foreground="DarkMagenta"/>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <fa:ImageAwesome Height="16" Icon="Trash" Foreground="DarkRed"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar Header="Сервера"  Band="1">
+                            <ComboBox Width="150"/>
+                            <Button ToolTip="Добавить">
+                                <fa:ImageAwesome Height="16" Icon="PlusCircle" Foreground="DarkGreen"/>
+                            </Button>
+                            <Button ToolTip="Редактировать">
+                                <fa:ImageAwesome Height="16" Icon="Edit" Foreground="DarkMagenta"/>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <fa:ImageAwesome Height="16" Icon="Trash" Foreground="DarkRed"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar Header="Получатели"  Band="1" BandIndex="0">
+                            <Button ToolTip="Добавить">
+                                <fa:ImageAwesome Height="16" Icon="PlusCircle" Foreground="DarkGreen"/>
+                            </Button>
+                            <Button ToolTip="Редактировать">
+                                <fa:ImageAwesome Height="16" Icon="Edit" Foreground="DarkMagenta"/>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <fa:ImageAwesome Height="16" Icon="Trash" Foreground="DarkRed"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar>
+                            <Button ToolTip="Перейти в планировщик">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Перейти в планировщик"/>
+                                    <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Calendar"/>
+                                </StackPanel>
+                            </Button>
+                        </ToolBar>
+                    </ToolBarTray>
+                    <GroupBox Grid.Row="1" Header="Получатели писем">
+                        
+                    </GroupBox>
+                    
+                    <!--  
+                    
+                    Закомитил свой дезайн
+                    
+
                     <Button Content="Send" Margin="150,326,473,0" Click="OnSendButtonClick" VerticalAlignment="Top" Height="20"/>
                     <TextBox x:Name="UserNameEdit" HorizontalAlignment="Left" VerticalAlignment="Top"
                              Margin="10,30,0,0" Text="UserName" TextWrapping="Wrap" Width="101">
@@ -79,10 +156,32 @@
                     <TextBlock HorizontalAlignment="Left" Margin="10,110,0,0" Text="Письмо" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Width="101"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,60,0,0" Text="Тема" TextWrapping="Wrap" VerticalAlignment="Top" Width="101"/>
                     <TextBox HorizontalAlignment="Left" Margin="10,80,0,0" Text="Тема письма"
-                             Name="MailSubject"  TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
+                             Name="MailSubject"  TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>-->
                 </Grid>
             </TabItem>
-            <TabItem Padding="10,10" Header="Статистика">
+            <TabItem Padding="10,10">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Планировщик</TextBlock>
+                        <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Calendar"/>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem Padding="10,10">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Письма</TextBlock>
+                        <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Archive"/>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem Padding="10,10">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Статистика</TextBlock>
+                        <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="StackOverflow"/>
+                    </StackPanel>
+                </TabItem.Header>
             </TabItem>
         </TabControl>
     </DockPanel>

@@ -27,42 +27,42 @@ namespace WPFMailSender
         {
             InitializeComponent();
         }
-        private void OnSendButtonClick(object sender, RoutedEventArgs e)
-        {
+        //private void OnSendButtonClick(object sender, RoutedEventArgs e)
+        //{
             
-            const string from = "akurganskiy@yandex.ru";
-            const string to = "akurganskii@gmail.com";
+        //    const string from = "akurganskiy@yandex.ru";
+        //    const string to = "akurganskii@gmail.com";
 
-            try
-            {
-                using (var message = new MailMessage(from, to))
-                {
-                    message.Subject = MailSubject.Text;
-                    message.Body = MailBody.Text;
+        //    try
+        //    {
+        //        using (var message = new MailMessage(from, to))
+        //        {
+        //            message.Subject = MailSubject.Text;
+        //            message.Body = MailBody.Text;
 
 
-                    const string server_address = "smtp.yandex.ru";
-                    const int server_port = 25;
-                    using (var client = new SmtpClient(server_address, server_port))
-                    {
-                        client.EnableSsl = true;
+        //            const string server_address = "smtp.yandex.ru";
+        //            const int server_port = 25;
+        //            using (var client = new SmtpClient(server_address, server_port))
+        //            {
+        //                client.EnableSsl = true;
 
-                        var user_name = UserNameEdit.Text;
-                        SecureString user_password = PasswordEdit.SecurePassword;
+        //                var user_name = UserNameEdit.Text;
+        //                SecureString user_password = PasswordEdit.SecurePassword;
 
-                        client.Credentials = new NetworkCredential(user_name, user_password);
+        //                client.Credentials = new NetworkCredential(user_name, user_password);
 
-                        client.Send(message);
+        //                client.Send(message);
 
-                        MessageBox.Show("Письмо ушло","Successfully",
-                            MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
+        //                MessageBox.Show("Письмо ушло","Successfully",
+        //                    MessageBoxButton.OK, MessageBoxImage.Information);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception error)
+        //    {
+        //        MessageBox.Show(error.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //}
     }
 }
