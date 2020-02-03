@@ -131,7 +131,13 @@
                         </ToolBar>
                     </ToolBarTray>
                     <GroupBox Grid.Row="1" Header="Получатели писем">
-                        
+                        <DataGrid>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id"/>
+                                <DataGridTextColumn Header="Имя" Width="*"/>
+                                <DataGridTextColumn Header="Адрес"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </GroupBox>
                     
                     <!--  
@@ -166,6 +172,62 @@
                         <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Calendar"/>
                     </StackPanel>
                 </TabItem.Header>
+                <DockPanel>
+                    <GroupBox Header="Управление">
+                        <StackPanel>
+                            <TextBlock Text="Календарь"/>
+                            <Calendar/>
+                            <StackPanel>
+                            <Button HorizontalContentAlignment="Stretch">
+                                    <DockPanel Margin="30,0">
+                                        <fa:ImageAwesome DockPanel.Dock="Right" Height="14" Icon="ClockOutline"/>
+                                        <TextBlock>Запланировать</TextBlock>
+                                    </DockPanel>
+                            </Button>
+                                <Button HorizontalContentAlignment="Stretch">
+                                    <DockPanel Margin="30,0">
+                                        <fa:ImageAwesome DockPanel.Dock="Right" Height="14" Icon="Send"/>
+                                        <TextBlock HorizontalAlignment="Center">Отправить</TextBlock>
+                                    </DockPanel>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Задания">
+                        <ListBox>
+                            <ListBoxItem HorizontalContentAlignment="Stretch">
+                                <GroupBox Header="Задание 1">
+                                    <StackPanel>
+                                        <TextBlock Text="Время"/>
+                                        <TextBlock Text="Сервер"/>
+                                        <TextBlock Text="Отправитель"/>
+                                        <TextBlock Text="Список получателей"/>
+                                    </StackPanel>
+                                </GroupBox>
+                            </ListBoxItem>
+                            <ListBoxItem HorizontalContentAlignment="Stretch">
+                                <GroupBox Header="Задание 2">
+                                    <StackPanel>
+                                        <TextBlock Text="Время"/>
+                                        <TextBlock Text="Сервер"/>
+                                        <TextBlock Text="Отправитель"/>
+                                        <TextBlock Text="Список получателей"/>
+                                    </StackPanel>
+                                </GroupBox>
+                            </ListBoxItem>
+                            <ListBoxItem HorizontalContentAlignment="Stretch">
+                                <GroupBox Header="Задание 3">
+                                    <StackPanel>
+                                        <TextBlock Text="Время"/>
+                                        <TextBlock Text="Сервер"/>
+                                        <TextBlock Text="Отправитель"/>
+                                        <TextBlock Text="Список получателей"/>
+                                    </StackPanel>
+                                </GroupBox>
+                            </ListBoxItem>
+                        </ListBox>
+                    </GroupBox>
+                </DockPanel>
             </TabItem>
             <TabItem Padding="10,10">
                 <TabItem.Header>
@@ -174,6 +236,36 @@
                         <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Archive"/>
                     </StackPanel>
                 </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition MinWidth="150" MaxWidth="300" Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="Список писем">
+                        <DockPanel>
+                            <UniformGrid DockPanel.Dock="Bottom" Rows="1">
+                                <Button Content="Add"/>
+                                <Button Content="Delete"/>
+                            </UniformGrid>
+                            <ListBox>
+                                <ListBoxItem>Письмо 1</ListBoxItem>
+                                <ListBoxItem>Письмо 2</ListBoxItem>
+                                <ListBoxItem>Письмо 3</ListBoxItem>
+                                <ListBoxItem>Письмо 4</ListBoxItem>
+                            </ListBox>
+                        </DockPanel>
+                    </GroupBox>
+                    <GroupBox Header="Выбранное письмо" Grid.Column="1">
+                        <DockPanel>
+                            <GroupBox DockPanel.Dock="Top" Header="Тема письма">
+                                <TextBox Text="Текст заголовка письма"/>
+                            </GroupBox>
+                            <GroupBox Header="Текст письма">
+                                <TextBox TextWrapping="Wrap" AcceptsReturn="True">Текст письма</TextBox>
+                            </GroupBox>
+                        </DockPanel>
+                    </GroupBox>
+                </Grid>
             </TabItem>
             <TabItem Padding="10,10">
                 <TabItem.Header>
