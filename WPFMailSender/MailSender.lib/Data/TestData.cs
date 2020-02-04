@@ -16,9 +16,9 @@ namespace MailSender.lib.Data
 
         public static List<Sender> Senders { get; } = new List<Sender>
         {
-            new Sender {Name = "Test1", Address = "Test1"},
-            new Sender {Name = "Test2", Address = "Test2"},
-            new Sender {Name = "Test3", Address = "Test3"}
+            new Sender {Name = "Test1", Address = "Test1@yandex.ru"},
+            new Sender {Name = "Test2", Address = "Test2@mail.ru"},
+            new Sender {Name = "Test3", Address = "Test3@gmail.com"}
         };
     }
 }

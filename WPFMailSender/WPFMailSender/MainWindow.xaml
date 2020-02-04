@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:WPFMailSender"
+        xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"
+        
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
@@ -87,7 +89,10 @@
                     </Grid.RowDefinitions>
                     <ToolBarTray>
                         <ToolBar Header="Отправители" Band="0">
-                            <ComboBox Width="150"/>
+                            <ComboBox Width="150" Name="SenderList"
+                                      ItemsSource="{x:Static data:TestData.Senders}" 
+                                      SelectedIndex="0"
+                                      DisplayMemberPath="Name"/>
                             <Button ToolTip="Добавить">
                                 <fa:ImageAwesome Height="16" Icon="PlusCircle" Foreground="DarkGreen"/>
                             </Button>
@@ -99,7 +104,22 @@
                             </Button>
                         </ToolBar>
                         <ToolBar Header="Сервера"  Band="1">
-                            <ComboBox Width="150"/>
+                            <ComboBox Width="150" ItemsSource="{x:Static data:TestData.Servers}"
+                                      SelectedIndex="0">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate DataType="entities.Server">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                            <TextBlock Text="{Binding Address}" Opacity="0.6">
+                                                <TextBlock.ToolTip>
+                                                    <TextBlock Text="{Binding Port, StringFormat=Port:{0}}"/>
+                                                </TextBlock.ToolTip>
+                                            </TextBlock> 
+                                        </StackPanel>                                    
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+
                             <Button ToolTip="Добавить">
                                 <fa:ImageAwesome Height="16" Icon="PlusCircle" Foreground="DarkGreen"/>
                             </Button>
