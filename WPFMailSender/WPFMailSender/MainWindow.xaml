@@ -6,6 +6,7 @@
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:WPFMailSender"
         xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"
+        xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
         
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -105,6 +106,7 @@
                         </ToolBar>
                         <ToolBar Header="Сервера"  Band="1">
                             <ComboBox Width="150" ItemsSource="{x:Static data:TestData.Servers}"
+                                      Name="ServersList"
                                       SelectedIndex="0">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate DataType="entities.Server">
@@ -151,11 +153,17 @@
                         </ToolBar>
                     </ToolBarTray>
                     <GroupBox Grid.Row="1" Header="Получатели писем">
-                        <DataGrid>
+                        <DataGrid ItemsSource="{x:Static data:TestData.Recipients}" 
+                                  Name="RecipientsList"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  VerticalGridLinesBrush="Gray"
+                                  GridLinesVisibility="Vertical"
+                                  AlternatingRowBackground="LightGray">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Id"/>
-                                <DataGridTextColumn Header="Имя" Width="*"/>
-                                <DataGridTextColumn Header="Адрес"/>
+                                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="Адрес" Binding="{Binding Address}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </GroupBox>
@@ -204,7 +212,7 @@
                                         <TextBlock>Запланировать</TextBlock>
                                     </DockPanel>
                             </Button>
-                                <Button HorizontalContentAlignment="Stretch">
+                                <Button HorizontalContentAlignment="Stretch" Click="OnSendButtonClick">
                                     <DockPanel Margin="30,0">
                                         <fa:ImageAwesome DockPanel.Dock="Right" Height="14" Icon="Solid_MailBulk"/>
                                         <TextBlock HorizontalAlignment="Center">Отправить</TextBlock>
@@ -278,10 +286,10 @@
                     <GroupBox Header="Выбранное письмо" Grid.Column="1">
                         <DockPanel>
                             <GroupBox DockPanel.Dock="Top" Header="Тема письма">
-                                <TextBox Text="Текст заголовка письма"/>
+                                <TextBox Text="Текст заголовка письма" Name="MailHeader"/>
                             </GroupBox>
-                            <GroupBox Header="Текст письма">
-                                <TextBox TextWrapping="Wrap" AcceptsReturn="True">Текст письма</TextBox>
+                            <GroupBox Header="Текст письма" >
+                                <TextBox TextWrapping="Wrap" AcceptsReturn="True" Name="MailBody">Текст письма</TextBox>
                             </GroupBox>
                         </DockPanel>
                     </GroupBox>

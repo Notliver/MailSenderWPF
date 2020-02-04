@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using MailSender.lib.Data;
+using MailSender.lib.Entities;
+using MailSender.lib.Service;
+
+
 
 namespace WPFMailSender
 {
@@ -27,9 +16,26 @@ namespace WPFMailSender
         {
             InitializeComponent();
         }
+
+        private void OnSendButtonClick(object Sender, RoutedEventArgs e)
+        {
+            var recipient = RecipientsList.SelectedItem as Recipient;
+            var sender = SenderList.SelectedItem as Sender;
+            var server = ServersList.SelectedItem as Server;
+
+            if (recipient is null || server is null || sender is null) return;
+
+            var mail_sender = new MailSender.lib.Services.MailSender(server.Address,
+                                                          server.Port,
+                                                          server.UseSSL,
+                                                          server.Login,
+                                                          server.Password.Decode(3));
+
+            mail_sender.Send(MailHeader.Text, MailBody.Text, sender.Address, recipient.Address);
+        }
         //private void OnSendButtonClick(object sender, RoutedEventArgs e)
         //{
-            
+
         //    const string from = "akurganskiy@yandex.ru";
         //    const string to = "akurganskii@gmail.com";
 
