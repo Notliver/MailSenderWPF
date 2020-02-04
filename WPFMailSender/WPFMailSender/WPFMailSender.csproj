@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MailSender.lib\MailSender.lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Media\arrow_circle_right.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

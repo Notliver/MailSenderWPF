@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MailSender.lib.Entities
 {
-    class Sender
+    public class Sender
     {
         public string Name { get; set; }
 
