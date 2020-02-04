@@ -94,7 +94,7 @@
                                       ItemsSource="{x:Static data:TestData.Senders}" 
                                       SelectedIndex="0"
                                       DisplayMemberPath="Name" IsEditable="True"/>
-                            <Button ToolTip="Добавить">
+                            <Button ToolTip="Добавить" Click="OnSenderEditClick">
                                 <fa:ImageAwesome Height="16" Icon="Solid_Plus" Foreground="DarkGreen"/>
                             </Button>
                             <Button ToolTip="Редактировать">

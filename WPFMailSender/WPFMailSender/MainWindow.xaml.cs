@@ -33,6 +33,19 @@ namespace WPFMailSender
 
             mail_sender.Send(MailHeader.Text, MailBody.Text, sender.Address, recipient.Address);
         }
+
+        private void OnSenderEditClick(object Sender, RoutedEventArgs e)
+        {
+            var sender = SenderList.SelectedItem as Sender;
+            if (sender is null) return;
+
+            var dialog = new SenderEditor(sender, this);
+
+            if (dialog.ShowDialog() != true) return;
+
+
+        }
+
         //private void OnSendButtonClick(object sender, RoutedEventArgs e)
         //{
 
