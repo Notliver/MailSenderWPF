@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:WPFMailSender"
         xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"
         
@@ -78,7 +78,7 @@
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock>Рассылка</TextBlock>
-                        <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Send"/>
+                        <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Solid_MailBulk"/>
                     </StackPanel>
                 </TabItem.Header>
 
@@ -92,15 +92,15 @@
                             <ComboBox Width="150" Name="SenderList"
                                       ItemsSource="{x:Static data:TestData.Senders}" 
                                       SelectedIndex="0"
-                                      DisplayMemberPath="Name"/>
+                                      DisplayMemberPath="Name" IsEditable="True"/>
                             <Button ToolTip="Добавить">
-                                <fa:ImageAwesome Height="16" Icon="PlusCircle" Foreground="DarkGreen"/>
+                                <fa:ImageAwesome Height="16" Icon="Solid_Plus" Foreground="DarkGreen"/>
                             </Button>
                             <Button ToolTip="Редактировать">
-                                <fa:ImageAwesome Height="16" Icon="Edit" Foreground="DarkMagenta"/>
+                                <fa:ImageAwesome Height="16" Icon="Solid_Edit" Foreground="DarkMagenta"/>
                             </Button>
                             <Button ToolTip="Удалить">
-                                <fa:ImageAwesome Height="16" Icon="Trash" Foreground="DarkRed"/>
+                                <fa:ImageAwesome Height="16" Icon="Solid_Trash" Foreground="DarkRed"/>
                             </Button>
                         </ToolBar>
                         <ToolBar Header="Сервера"  Band="1">
@@ -121,31 +121,31 @@
                             </ComboBox>
 
                             <Button ToolTip="Добавить">
-                                <fa:ImageAwesome Height="16" Icon="PlusCircle" Foreground="DarkGreen"/>
+                                <fa:ImageAwesome Height="16" Icon="Solid_Plus" Foreground="DarkGreen"/>
                             </Button>
                             <Button ToolTip="Редактировать">
-                                <fa:ImageAwesome Height="16" Icon="Edit" Foreground="DarkMagenta"/>
+                                <fa:ImageAwesome Height="16" Icon="Solid_Edit" Foreground="DarkMagenta"/>
                             </Button>
                             <Button ToolTip="Удалить">
-                                <fa:ImageAwesome Height="16" Icon="Trash" Foreground="DarkRed"/>
+                                <fa:ImageAwesome Height="16" Icon="Solid_Trash" Foreground="DarkRed"/>
                             </Button>
                         </ToolBar>
                         <ToolBar Header="Получатели"  Band="1" BandIndex="0">
                             <Button ToolTip="Добавить">
-                                <fa:ImageAwesome Height="16" Icon="PlusCircle" Foreground="DarkGreen"/>
+                                <fa:ImageAwesome Height="16" Icon="Solid_Plus" Foreground="DarkGreen"/>
                             </Button>
                             <Button ToolTip="Редактировать">
-                                <fa:ImageAwesome Height="16" Icon="Edit" Foreground="DarkMagenta"/>
+                                <fa:ImageAwesome Height="16" Icon="Solid_Edit" Foreground="DarkMagenta"/>
                             </Button>
                             <Button ToolTip="Удалить">
-                                <fa:ImageAwesome Height="16" Icon="Trash" Foreground="DarkRed"/>
+                                <fa:ImageAwesome Height="16" Icon="Solid_Trash" Foreground="DarkRed"/>
                             </Button>
                         </ToolBar>
                         <ToolBar>
                             <Button ToolTip="Перейти в планировщик">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Перейти в планировщик"/>
-                                    <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Calendar"/>
+                                    <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Regular_CalendarAlt"/>
                                 </StackPanel>
                             </Button>
                         </ToolBar>
@@ -189,7 +189,7 @@
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock>Планировщик</TextBlock>
-                        <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Calendar"/>
+                        <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Regular_CalendarAlt"/>
                     </StackPanel>
                 </TabItem.Header>
                 <DockPanel>
@@ -200,13 +200,13 @@
                             <StackPanel>
                             <Button HorizontalContentAlignment="Stretch">
                                     <DockPanel Margin="30,0">
-                                        <fa:ImageAwesome DockPanel.Dock="Right" Height="14" Icon="ClockOutline"/>
+                                        <fa:ImageAwesome DockPanel.Dock="Right" Height="14" Icon="Solid_Clock"/>
                                         <TextBlock>Запланировать</TextBlock>
                                     </DockPanel>
                             </Button>
                                 <Button HorizontalContentAlignment="Stretch">
                                     <DockPanel Margin="30,0">
-                                        <fa:ImageAwesome DockPanel.Dock="Right" Height="14" Icon="Send"/>
+                                        <fa:ImageAwesome DockPanel.Dock="Right" Height="14" Icon="Solid_MailBulk"/>
                                         <TextBlock HorizontalAlignment="Center">Отправить</TextBlock>
                                     </DockPanel>
                                 </Button>
@@ -253,7 +253,7 @@
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock>Письма</TextBlock>
-                        <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Archive"/>
+                        <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Solid_Archive"/>
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
@@ -291,7 +291,7 @@
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock>Статистика</TextBlock>
-                        <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="StackOverflow"/>
+                        <fa:ImageAwesome Margin="5,0,0,0" Height="16" Icon="Brands_StackOverflow"/>
                     </StackPanel>
                 </TabItem.Header>
             </TabItem>
