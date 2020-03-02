@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using MailSender.lib.Data;
+using MailSender.lib.Entities;
+using MailSender.lib.Service;
+
+
 
 namespace WPFMailSender
 {
@@ -27,42 +16,72 @@ namespace WPFMailSender
         {
             InitializeComponent();
         }
-        private void OnSendButtonClick(object sender, RoutedEventArgs e)
+
+        private void OnSendButtonClick(object Sender, RoutedEventArgs e)
         {
-            
-            const string from = "akurganskiy@yandex.ru";
-            const string to = "akurganskii@gmail.com";
+            var recipient = RecipientsList.SelectedItem as Recipient;
+            var sender = SenderList.SelectedItem as Sender;
+            var server = ServersList.SelectedItem as Server;
 
-            try
-            {
-                using (var message = new MailMessage(from, to))
-                {
-                    message.Subject = MailSubject.Text;
-                    message.Body = MailBody.Text;
+            if (recipient is null || server is null || sender is null) return;
 
+            var mail_sender = new MailSender.lib.Services.MailSender(server.Address,
+                                                          server.Port,
+                                                          server.UseSSL,
+                                                          server.Login,
+                                                          server.Password.Decode(3));
 
-                    const string server_address = "smtp.yandex.ru";
-                    const int server_port = 25;
-                    using (var client = new SmtpClient(server_address, server_port))
-                    {
-                        client.EnableSsl = true;
-
-                        var user_name = UserNameEdit.Text;
-                        SecureString user_password = PasswordEdit.SecurePassword;
-
-                        client.Credentials = new NetworkCredential(user_name, user_password);
-
-                        client.Send(message);
-
-                        MessageBox.Show("Письмо ушло","Successfully",
-                            MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            mail_sender.Send(MailHeader.Text, MailBody.Text, sender.Address, recipient.Address);
         }
+
+        private void OnSenderEditClick(object Sender, RoutedEventArgs e)
+        {
+            var sender = SenderList.SelectedItem as Sender;
+            if (sender is null) return;
+
+            var dialog = new SenderEditor(sender, this);
+
+            if (dialog.ShowDialog() != true) return;
+
+
+        }
+
+        //private void OnSendButtonClick(object sender, RoutedEventArgs e)
+        //{
+
+        //    const string from = "akurganskiy@yandex.ru";
+        //    const string to = "akurganskii@gmail.com";
+
+        //    try
+        //    {
+        //        using (var message = new MailMessage(from, to))
+        //        {
+        //            message.Subject = MailSubject.Text;
+        //            message.Body = MailBody.Text;
+
+
+        //            const string server_address = "smtp.yandex.ru";
+        //            const int server_port = 25;
+        //            using (var client = new SmtpClient(server_address, server_port))
+        //            {
+        //                client.EnableSsl = true;
+
+        //                var user_name = UserNameEdit.Text;
+        //                SecureString user_password = PasswordEdit.SecurePassword;
+
+        //                client.Credentials = new NetworkCredential(user_name, user_password);
+
+        //                client.Send(message);
+
+        //                MessageBox.Show("Письмо ушло","Successfully",
+        //                    MessageBoxButton.OK, MessageBoxImage.Information);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception error)
+        //    {
+        //        MessageBox.Show(error.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //}
     }
 }
